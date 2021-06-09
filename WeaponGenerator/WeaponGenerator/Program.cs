@@ -24,7 +24,7 @@ namespace WeaponGenerator
                 }
                 timer.Stop();
                 TimeSpan tm = timer.Elapsed;
-                Console.WriteLine("Time elapsed:{0:#0} Minutes, {1:#0} Seconds, {2:##0} Milliseconds", tm.Minutes, tm.Seconds, tm.Milliseconds);
+                Console.WriteLine("Time elapsed: {0:#0} Minutes, {1:#0} Seconds, {2:##0} Milliseconds", tm.Minutes, tm.Seconds, tm.Milliseconds);
             }
             Console.WriteLine("Press any key to exit application..."); Console.ReadKey();
             

@@ -99,7 +99,7 @@ namespace WeaponGeneration
                 case DAMAGE_TYPE.MAIN.WATER:
                     return "Water";
                 case DAMAGE_TYPE.MAIN.EARTH:
-                    return "Earty";
+                    return "Earth";
                 case DAMAGE_TYPE.MAIN.AIR:
                     return "Air";
                 case DAMAGE_TYPE.MAIN.VOID:
