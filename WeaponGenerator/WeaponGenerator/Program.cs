@@ -18,7 +18,7 @@ namespace WeaponGenerator
 			logFile.LogClear();
 			logFile.LogText($"|| Log created on: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
 
-			Menu.MainMenu();
+			//Menu.MainMenu();
 			logFile.LogText("----------------------");
 		}
 	}

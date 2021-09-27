@@ -2,8 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0-windows10.0.20348.0</TargetFramework>
-    <MinimumPlatformVersion>10.0.17763.0</MinimumPlatformVersion>
+    <TargetFramework>net5.0</TargetFramework>
     <StartupObject>WeaponGenerator.Program</StartupObject>
   </PropertyGroup>
 
