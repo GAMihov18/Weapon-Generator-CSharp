@@ -1,26 +1,25 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using WeaponGeneration;
 using UI;
+using LogSystem;
+using RFMiscLib;
+
 namespace WeaponGenerator
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            
-            StreamWriter logFile = new StreamWriter("log.txt");
-            StreamWriter weaponLog = new StreamWriter("generated_weapons.txt");
-            using (logFile)
-            {
-                logFile.WriteLine($"|| Log created on: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			Console.Title = "Generator";
+			Log logFile = new Log("log.txt",true);
+			logFile.LogClear();
+			logFile.LogText($"|| Log created on: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
 
-                Menu.MainMenu();
-
-                logFile.WriteLine("----------------------");
-            }
-
-        }
-    }
+			Menu.MainMenu();
+			logFile.LogText("----------------------");
+		}
+	}
 }
