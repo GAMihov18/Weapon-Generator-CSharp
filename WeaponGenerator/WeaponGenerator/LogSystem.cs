@@ -31,25 +31,25 @@ namespace LogSystem
         public void LogInfo(string message)
         {
             StreamWriter logFile = new StreamWriter(path, append);
-            logFile.WriteLine($"INFO: {message}");
+            logFile.WriteLine($"INFO    || {message}");
             logFile.Close();
         }
         public void LogWarning(string message)
         {
             StreamWriter logFile = new StreamWriter(path, append);
-            logFile.WriteLine($"WARNING: {message}");
+            logFile.WriteLine($"WARNING || {message}");
             logFile.Close();
         }
         public void LogError(string message)
         {
             StreamWriter logFile = new StreamWriter(path, append);
-            logFile.WriteLine($"ERROR: {message}");
+            logFile.WriteLine($"ERROR   || {message}");
             logFile.Close();
         }
         public void LogFatal(string message)
         {
             StreamWriter logFile = new StreamWriter(path, append);
-            logFile.WriteLine($"FATAL: {message}");
+            logFile.WriteLine($"FATAL   || {message}");
             logFile.Close();
         }
     }

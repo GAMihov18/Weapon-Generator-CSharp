@@ -15,11 +15,10 @@ namespace WeaponGenerator
 		{
 			Console.Title = "Generator";
 			Log logFile = new Log("log.txt",true);
-			logFile.LogClear();
-			logFile.LogText($"|| Log created on: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
+			logFile.LogText($"Log created on: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
 
 			//Menu.MainMenu();
-			logFile.LogText("----------------------");
+			logFile.LogText("End of log\n----------------------");
 		}
 	}
 }

@@ -133,8 +133,8 @@ namespace WeaponGeneration
 		}
 		public double PhysicalDamage
 		{
-			get{ return physicalDamage;}
-			set{ physicalDamage = value; }
+			get { return physicalDamage; }
+			set { physicalDamage = value; }
 		}
 		public double MagicalDamage
 		{
@@ -178,6 +178,20 @@ namespace WeaponGeneration
 			critRate = RAND.getRandDouble(0.01, 0.21);
 			weaponType = (WEAPON_VALUE.TYPE)RAND.getRandInt(0, 15);
 			rarity = (WEAPON_VALUE.RARITY)RAND.getRandInt(0, 7);
+			SetPhysDamage();
+			magicalDamageType = (WEAPON_VALUE.DAMAGE_TYPE.MAIN)RAND.getRandInt(3, 9);
+			SetMainDamageType();
+			applyRarityMod();
+			applyMainDamageMod();
+			SetName();
+		}
+		public Weapon(WEAPON_VALUE.RARITY rarity)
+        {
+			assemblyDamage = RAND.getRandDouble(1, 1001);
+			critMult = RAND.getRandDouble(1.05, 2.51);
+			critRate = RAND.getRandDouble(0.01, 0.21);
+			weaponType = (WEAPON_VALUE.TYPE)RAND.getRandInt(0, 15);
+			this.rarity = rarity;
 			SetPhysDamage();
 			magicalDamageType = (WEAPON_VALUE.DAMAGE_TYPE.MAIN)RAND.getRandInt(3, 9);
 			SetMainDamageType();
