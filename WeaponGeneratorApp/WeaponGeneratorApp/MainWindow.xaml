@@ -1,0 +1,20 @@
+﻿<Window x:Class="WeaponGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeaponGenerator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="10px">
+
+
+        <StackPanel Margin="555,225,10,10">
+            <TextBox x:Name="NumberOfWeaponsTB" KeyDown="NumberOfWeapons_KeyPressed"/>
+            <Button x:Name="GenerateWeaponsButton" Content="Generate Weapon" Click="GenerateWeaponsButton_Click"/>
+            <CheckBox x:Name="SaveWeapon">Save Weapons</CheckBox>
+        </StackPanel>
+        <ListView x:Name="listOfWeapons" Margin="10,10,230,10"/>
+
+    </Grid>
+</Window>

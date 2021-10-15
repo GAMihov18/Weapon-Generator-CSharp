@@ -6,7 +6,6 @@ using System.Threading;
 using System.Xml.Linq;
 using LogSystem;
 using WeaponGeneration;
-using static WeaponGeneration.WEAPON_VALUE;
 
 namespace UI
 {
@@ -21,12 +20,12 @@ namespace UI
                           $"3. Generate armors(WIP)\n" +
                           $"0. Exit\n");
             int temp;
-            switch (Console.ReadKey().KeyChar)
+            switch (Console.ReadLine())
             {
-                case '1':
+                case "1":
                     MainMenu();
                     break;
-                case '2':
+                case "2":
                     Console.Clear();
                     Log log = new Log("weapon_generator.txt", true);
                     log.LogClear();
@@ -42,13 +41,16 @@ namespace UI
                     Console.Write($"Successfully generated {temp} weapons.\nCheck .exe directory for a file"); Thread.Sleep(1000);
                     MainMenu();
                     break;
-                case '3':
+                case "3":
                     MainMenu();
                     break;
-                case '0':
+                case "0":
                     Console.WriteLine("\nExiting App");
                     break;
                 default:
+                    Console.Clear();
+                    Console.Write("Wrong input, returning to main menu");
+                    MainMenu();
                     break;
             }
         }
