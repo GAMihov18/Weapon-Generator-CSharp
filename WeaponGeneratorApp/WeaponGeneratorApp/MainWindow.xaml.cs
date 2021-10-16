@@ -23,11 +23,12 @@ namespace WeaponGenerator
     public partial class MainWindow : Window
 	{
 		List<Weapon> weapons = new List<Weapon>();
+		int totalGeneratedWeapons = 0;
 		public MainWindow()
 		{
 			InitializeComponent();
 		}
-
+			
 		private void weaponItem_DoubleClick(object sender, MouseButtonEventArgs e)
 		{
 			ListViewItem item = sender as ListViewItem;
@@ -51,8 +52,11 @@ namespace WeaponGenerator
 			
 			if (int.TryParse(NumberOfWeaponsTB.Text,out num))
 			{
+				weapons.Clear();
+				totalGeneratedWeapons += num;
 				for (int i = 0; i < num; i++)
 				{
+					
 					weapons.Add(new Weapon());
 					ListViewItem weaponItem = new ListViewItem();
 					weaponItem.Tag = i;
@@ -84,6 +88,72 @@ namespace WeaponGenerator
 			
 		}
 
-		
-	}
+        private void NumberOfArmorsTB_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void GenerateArmorsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NumberOfPlayersTB_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void GeneratePlayersButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GeneratorMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+			MainMenu.Visibility = Visibility.Collapsed;
+			GeneratorMenu.Visibility = Visibility.Visible;
+        }
+
+        private void ChoosePlayerGeneration_Click(object sender, RoutedEventArgs e)
+        {
+
+			WeaponGeneratorGrid.Visibility = Visibility.Collapsed;
+			ArmorGeneratorGrid.Visibility = Visibility.Collapsed;
+			PlayerGeneratorGrid.Visibility = Visibility.Visible;
+			ChoosePlayerGeneration.Visibility = Visibility.Collapsed;
+			ChooseWeaponGeneration.Visibility = Visibility.Visible;
+			ChooseArmorGeneration.Visibility = Visibility.Visible;
+		}
+
+		private void ChooseArmorGeneration_Click(object sender, RoutedEventArgs e)
+        {
+			PlayerGeneratorGrid.Visibility = Visibility.Collapsed;
+			WeaponGeneratorGrid.Visibility = Visibility.Collapsed;
+			ArmorGeneratorGrid.Visibility = Visibility.Visible;
+			ChooseArmorGeneration.Visibility = Visibility.Collapsed;
+			ChoosePlayerGeneration.Visibility = Visibility.Visible;
+			ChooseWeaponGeneration.Visibility = Visibility.Visible;
+		}
+
+		private void ChooseWeaponGeneration_Click(object sender, RoutedEventArgs e)
+		{
+			PlayerGeneratorGrid.Visibility = Visibility.Collapsed;
+			ArmorGeneratorGrid.Visibility = Visibility.Collapsed;
+			WeaponGeneratorGrid.Visibility = Visibility.Visible;
+			ChoosePlayerGeneration.Visibility = Visibility.Visible;
+			ChooseArmorGeneration.Visibility = Visibility.Visible;
+			ChooseWeaponGeneration.Visibility = Visibility.Collapsed;
+		}
+
+		private void ChooseBackToMainMenu_Click(object sender, RoutedEventArgs e)
+        {
+			GeneratorMenu.Visibility = Visibility.Collapsed;
+			MainMenu.Visibility = Visibility.Visible;
+		}
+
+		private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+			Application.Current.Shutdown();
+        }
+    }
 }

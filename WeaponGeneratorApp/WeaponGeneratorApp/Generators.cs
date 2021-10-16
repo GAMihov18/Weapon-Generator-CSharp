@@ -11,7 +11,7 @@ namespace WeaponGeneration
 	{
 		public enum TYPE
 		{
-			KNIFE, DAGGER, SHORTSWORD, LONGSWORD, BASTARD_SWORD, BOW, POLEARM, SPEAR, TWO_HANDED_SWORD, SHIELD, HAMMER, MACE, WAR_AXE, BATTLE_AXE, RAPIER
+			KNIFE, DAGGER, SHORTSWORD, LONGSWORD, BASTARD_SWORD, BOW, POLEARM, SPEAR, TWO_HANDED_SWORD, HAMMER, MACE, WAR_AXE, BATTLE_AXE, RAPIER
 		}
 		public enum RARITY
 		{
@@ -21,7 +21,7 @@ namespace WeaponGeneration
 		{
 			public enum MAIN
 			{
-				SLASHING, PIERCING, BLUNT, FIRE, WATER, EARTH, AIR, VOID, LUX, PROTECTION
+				SLASHING, PIERCING, BLUNT, FIRE, WATER, EARTH, AIR, VOID, LUX
 			}
 		}
 		
@@ -47,8 +47,6 @@ namespace WeaponGeneration
 					return "Spear";
 				case TYPE.TWO_HANDED_SWORD:
 					return "Two-handed Sword";
-				case TYPE.SHIELD:
-					return "Shield";
 				case TYPE.HAMMER:
 					return "Hammer";
 				case TYPE.MACE:
@@ -181,7 +179,7 @@ namespace WeaponGeneration
 			assemblyDamage = RAND.getRandDouble(1, 1001);
 			critMult = RAND.getRandDouble(1.05, 2.51);
 			critRate = RAND.getRandDouble(0.01, 0.21);
-			weaponType = (WEAPON_VALUE.TYPE)RAND.getRandInt(0, 15);
+			weaponType = (WEAPON_VALUE.TYPE)RAND.getRandInt(0, 14);
 			rarity = (WEAPON_VALUE.RARITY)RAND.getRandInt(0, 7);
 			SetPhysDamage();
 			magicalDamageType = (WEAPON_VALUE.DAMAGE_TYPE.MAIN)RAND.getRandInt(3, 9);
@@ -195,7 +193,7 @@ namespace WeaponGeneration
 			assemblyDamage = RAND.getRandDouble(1, 1001);
 			critMult = RAND.getRandDouble(1.05, 2.51);
 			critRate = RAND.getRandDouble(0.01, 0.21);
-			weaponType = (WEAPON_VALUE.TYPE)RAND.getRandInt(0, 15);
+			weaponType = (WEAPON_VALUE.TYPE)RAND.getRandInt(0, 14);
 			this.rarity = rarity;
 			SetPhysDamage();
 			magicalDamageType = (WEAPON_VALUE.DAMAGE_TYPE.MAIN)RAND.getRandInt(3, 9);
@@ -227,8 +225,6 @@ namespace WeaponGeneration
 				case WEAPON_VALUE.TYPE.MACE:
 				case WEAPON_VALUE.TYPE.HAMMER:
 					physicalDamageType = WEAPON_VALUE.DAMAGE_TYPE.MAIN.BLUNT;
-					break;
-				case WEAPON_VALUE.TYPE.SHIELD:
 					break;
 				default:
 					Exception exc = new Exception("Invalid weapon type");
@@ -423,8 +419,6 @@ namespace WeaponGeneration
 						default:
 							break;
 					}
-					break;
-				case WEAPON_VALUE.DAMAGE_TYPE.MAIN.PROTECTION:
 					break;
 				default:
 					break;

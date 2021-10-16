@@ -7,14 +7,67 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Margin="10px">
+        <Grid x:Name="MainMenu" Visibility="Visible" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel MaxWidth="500px" Grid.Column="1">
+                <Button x:Name="GeneratorMenuButton" Content="Go to generation menu" Click="GeneratorMenuButton_Click"/>
+            </StackPanel>
+            <Button x:Name="ExitButton" Content="Exit app" Click="ExitButton_Click" Grid.Column="0" MaxHeight="80px" MinHeight="50px" VerticalAlignment="Bottom"/>
+        </Grid>
+
+        <Grid x:Name="GeneratorMenu" Visibility="Hidden">
+            
+            <Grid x:Name="WeaponGeneratorGrid" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Bottom" Grid.Column="1" MinHeight="100px">
+                    <TextBox x:Name="NumberOfWeaponsTB" KeyDown="NumberOfWeapons_KeyPressed"/>
+                    <Button x:Name="GenerateWeaponsButton" Content="Generate Weapon" Click="GenerateWeaponsButton_Click"/>
+                    <CheckBox x:Name="SaveWeapon">Save Weapons</CheckBox>
+                </StackPanel>
+                <ListView x:Name="listOfWeapons" Grid.Column="0"/>
+            </Grid>
+            <Grid x:Name="ArmorGeneratorGrid" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Bottom" Grid.Column="1" MinHeight="100px">
+                    <TextBox x:Name="NumberOfArmorsTB"  KeyDown="NumberOfArmorsTB_KeyDown"/>
+                    <Button x:Name="GenerateArmorsButton" Content="Generate Armor" Click="GenerateArmorsButton_Click"/>
+                    <CheckBox x:Name="SaveArmor" Content="Save Armor"/>
+                </StackPanel>
+                <ListView x:Name="listOfArmors" Grid.Column="0"/>
+            </Grid>
+
+            <Grid x:Name="PlayerGeneratorGrid" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Bottom" Grid.Column="1" MinHeight="100px">
+                    <TextBox x:Name="NumberOfPlayersTB" KeyDown="NumberOfPlayersTB_KeyDown"/>
+                    <Button x:Name="GeneratePlayersButton" Content="Generate Armor" Click="GeneratePlayersButton_Click"/>
+                    <CheckBox x:Name="SavePlayer" Content="Save Player"/>
+                </StackPanel>
+                <ListView x:Name="listOfPlayers" Grid.Column="0"/>
+            </Grid>
 
 
-        <StackPanel Margin="555,225,10,10">
-            <TextBox x:Name="NumberOfWeaponsTB" KeyDown="NumberOfWeapons_KeyPressed"/>
-            <Button x:Name="GenerateWeaponsButton" Content="Generate Weapon" Click="GenerateWeaponsButton_Click"/>
-            <CheckBox x:Name="SaveWeapon">Save Weapons</CheckBox>
-        </StackPanel>
-        <ListView x:Name="listOfWeapons" Margin="10,10,230,10"/>
-
+            <StackPanel x:Name="GeneratorNavigation" MinWidth="250px" MaxWidth="250px" HorizontalAlignment="Right">
+                <Button x:Name="ChoosePlayerGeneration" Content="Go to Player Generation" Click="ChoosePlayerGeneration_Click"/>
+                <Button x:Name="ChooseWeaponGeneration" Content="Go to Weapon Generation" Click="ChooseWeaponGeneration_Click"/>
+                <Button x:Name="ChooseArmorGeneration" Content="Go to Armor Generator" Click="ChooseArmorGeneration_Click"/>
+                <Button x:Name="ChooseBackToMainMenu" Content="Go back to Main Menu" Click="ChooseBackToMainMenu_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
-</Window>
+</Window>   
