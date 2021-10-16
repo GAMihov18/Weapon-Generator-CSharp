@@ -31,7 +31,7 @@
                 <StackPanel VerticalAlignment="Bottom" Grid.Column="1" MinHeight="100px">
                     <TextBox x:Name="NumberOfWeaponsTB" KeyDown="NumberOfWeapons_KeyPressed"/>
                     <Button x:Name="GenerateWeaponsButton" Content="Generate Weapon" Click="GenerateWeaponsButton_Click"/>
-                    <CheckBox x:Name="SaveWeapon">Save Weapons</CheckBox>
+                    <CheckBox x:Name="SaveWeapon">Save Weapons to File</CheckBox>
                 </StackPanel>
                 <ListView x:Name="listOfWeapons" Grid.Column="0"/>
             </Grid>
@@ -43,7 +43,7 @@
                 <StackPanel VerticalAlignment="Bottom" Grid.Column="1" MinHeight="100px">
                     <TextBox x:Name="NumberOfArmorsTB"  KeyDown="NumberOfArmorsTB_KeyDown"/>
                     <Button x:Name="GenerateArmorsButton" Content="Generate Armor" Click="GenerateArmorsButton_Click"/>
-                    <CheckBox x:Name="SaveArmor" Content="Save Armor"/>
+                    <CheckBox x:Name="SaveArmor" Content="Save Armors to File"/>
                 </StackPanel>
                 <ListView x:Name="listOfArmors" Grid.Column="0"/>
             </Grid>
@@ -56,7 +56,7 @@
                 <StackPanel VerticalAlignment="Bottom" Grid.Column="1" MinHeight="100px">
                     <TextBox x:Name="NumberOfPlayersTB" KeyDown="NumberOfPlayersTB_KeyDown"/>
                     <Button x:Name="GeneratePlayersButton" Content="Generate Armor" Click="GeneratePlayersButton_Click"/>
-                    <CheckBox x:Name="SavePlayer" Content="Save Player"/>
+                    <CheckBox x:Name="SavePlayer" Content="Save Players to File"/>
                 </StackPanel>
                 <ListView x:Name="listOfPlayers" Grid.Column="0"/>
             </Grid>
