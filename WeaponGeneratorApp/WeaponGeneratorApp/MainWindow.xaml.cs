@@ -17,10 +17,10 @@ using Generation.Weapons;
 using LogSystem;
 namespace WeaponGenerator
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
 	{
 		List<Weapon> weapons = new List<Weapon>();
 		int totalGeneratedWeapons = 0;
@@ -28,13 +28,11 @@ namespace WeaponGenerator
 		{
 			InitializeComponent();
 		}
-			
+
 		private void weaponItem_DoubleClick(object sender, MouseButtonEventArgs e)
 		{
 			ListViewItem item = sender as ListViewItem;
-			Window window1 = new WeaponInfo(weapons[(int)item.Tag]);
-			window1.Owner = this;
-			window1.Show();
+			WeaponInfoTB.Text = weapons[(int)item.Tag].GetWeaponData(true);
 
 		}
 		private void NumberOfWeapons_KeyPressed(object sender, KeyEventArgs e)
@@ -42,27 +40,27 @@ namespace WeaponGenerator
 			if (e.Key == Key.Enter)
 			{
 				GenerateWeaponsButton_Click(sender, e);
-            }
+			}
 		}
 		private void GenerateWeaponsButton_Click(object sender, RoutedEventArgs e)
 		{
-			Log log = new Log("generatedWeapons.txt",true);
+			Log log = new Log("generatedWeapons.txt", true);
 			log.Clear();
 			int num;
-			
-			if (int.TryParse(NumberOfWeaponsTB.Text,out num))
+
+			if (int.TryParse(NumberOfWeaponsTB.Text, out num))
 			{
 				weapons.Clear();
 				totalGeneratedWeapons += num;
 				for (int i = 0; i < num; i++)
 				{
-					
+
 					weapons.Add(new Weapon());
 					ListViewItem weaponItem = new ListViewItem();
 					weaponItem.Tag = i;
 					weaponItem.Name = "WeaponName";
 					weaponItem.Content = weapons[i].Name;
-					weaponItem.MouseDoubleClick += weaponItem_DoubleClick ;
+					weaponItem.MouseDoubleClick += weaponItem_DoubleClick;
 					listOfWeapons.Items.Add(weaponItem);
 				}
 				if ((bool)SaveWeapon.IsChecked)
@@ -74,7 +72,6 @@ namespace WeaponGenerator
 					MessageBoxImage icon = MessageBoxImage.Information;
 					MessageBoxButton button = MessageBoxButton.OK;
 					MessageBox.Show("Weapons successfully generated", "Info", button, icon);
-					
 				}
 				NumberOfWeaponsTB.Clear();
 			}
@@ -82,40 +79,46 @@ namespace WeaponGenerator
 			{
 				MessageBoxImage icon = MessageBoxImage.Error;
 				MessageBoxButton button = MessageBoxButton.OK;
-				MessageBox.Show("Please enter a number","Incorrect Input",button,icon);
+				MessageBox.Show("Please enter a number", "Incorrect Input", button, icon);
 				NumberOfWeaponsTB.Clear();
 			}
-			
+
 		}
 
-        private void NumberOfArmorsTB_KeyDown(object sender, KeyEventArgs e)
-        {
+		private void NumberOfArmorsTB_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+			{
+				GenerateArmorsButton_Click(sender, e);
+			}
+		}
 
-        }
+		private void GenerateArmorsButton_Click(object sender, RoutedEventArgs e)
+		{
 
-        private void GenerateArmorsButton_Click(object sender, RoutedEventArgs e)
-        {
+		}
 
-        }
+		private void NumberOfPlayersTB_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+			{
+				GeneratePlayersButton_Click(sender, e);
+			}
+		}
 
-        private void NumberOfPlayersTB_KeyDown(object sender, KeyEventArgs e)
-        {
+		private void GeneratePlayersButton_Click(object sender, RoutedEventArgs e)
+		{
 
-        }
+		}
 
-        private void GeneratePlayersButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void GeneratorMenuButton_Click(object sender, RoutedEventArgs e)
-        {
+		private void GeneratorMenuButton_Click(object sender, RoutedEventArgs e)
+		{
 			MainMenu.Visibility = Visibility.Collapsed;
 			GeneratorMenu.Visibility = Visibility.Visible;
-        }
+		}
 
-        private void ChoosePlayerGeneration_Click(object sender, RoutedEventArgs e)
-        {
+		private void ChoosePlayerGeneration_Click(object sender, RoutedEventArgs e)
+		{
 
 			WeaponGeneratorGrid.Visibility = Visibility.Collapsed;
 			ArmorGeneratorGrid.Visibility = Visibility.Collapsed;
@@ -126,7 +129,7 @@ namespace WeaponGenerator
 		}
 
 		private void ChooseArmorGeneration_Click(object sender, RoutedEventArgs e)
-        {
+		{
 			PlayerGeneratorGrid.Visibility = Visibility.Collapsed;
 			WeaponGeneratorGrid.Visibility = Visibility.Collapsed;
 			ArmorGeneratorGrid.Visibility = Visibility.Visible;
@@ -146,14 +149,14 @@ namespace WeaponGenerator
 		}
 
 		private void ChooseBackToMainMenu_Click(object sender, RoutedEventArgs e)
-        {
+		{
 			GeneratorMenu.Visibility = Visibility.Collapsed;
 			MainMenu.Visibility = Visibility.Visible;
 		}
 
 		private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
+		{
 			Application.Current.Shutdown();
-        }
-    }
+		}
+	}
 }
