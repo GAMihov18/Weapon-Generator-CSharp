@@ -578,7 +578,10 @@ namespace Generation
     {
 		struct PLAYER_VALUES
         {
-			
+			enum PLAYER_CLASS
+            {
+
+            }
         }
 		class Player
         {
@@ -586,12 +589,13 @@ namespace Generation
 			private double health;
 			private double stamina;
 			private double mana;
-			private Weapons.Weapon weapon1;
-			private Weapons.Weapon weapon2;
-			private Armors.Armor helmet;
-			private Armors.Armor chestplate;
-			private Armors.Armor leggings;
-			private Armors.Armor boots;
+			private Weapons.Weapon? weapon1;
+			private Weapons.Weapon? weapon2;
+			private Armors.Armor? helmet;
+			private Armors.Armor? chestplate;
+			private Armors.Armor? leggings;
+			private Armors.Armor? boots;
+			
         }
     }
 }
