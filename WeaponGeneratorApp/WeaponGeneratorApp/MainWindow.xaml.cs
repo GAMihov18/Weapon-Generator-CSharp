@@ -28,9 +28,11 @@ namespace WeaponGenerator
 		List<Weapon> weapons = new List<Weapon>();
 		List<ListViewItem> listViewItems = new List<ListViewItem>();
 		int totalGeneratedWeapons = 0;
+		Log log = new Log("log.txt",true);
+		
 		public MainWindow()
 		{
-			logFile.Clear();
+			log.LogInfo($"Log created on: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
 			InitializeComponent();
 		}
 
@@ -166,6 +168,7 @@ namespace WeaponGenerator
 
 		private void ExitButton_Click(object sender, RoutedEventArgs e)
 		{
+			log.LogInfo("End of log\n-----------------");
 			Application.Current.Shutdown();
 		}
 	}
