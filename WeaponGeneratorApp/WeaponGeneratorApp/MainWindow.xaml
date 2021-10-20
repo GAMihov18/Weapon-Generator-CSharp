@@ -35,6 +35,7 @@
                     <TextBox x:Name="NumberOfWeaponsTB" KeyDown="NumberOfWeapons_KeyPressed"/>
                     <Button x:Name="GenerateWeaponsButton" Content="Generate Weapon" Click="GenerateWeaponsButton_Click"/>
                     <CheckBox x:Name="SaveWeapon">Save Weapons to File</CheckBox>
+                    <ProgressBar x:Name="WeaponProgressBar" Height="15" Width="150" HorizontalAlignment="Left"/>
                 </StackPanel>
                 <ListView x:Name="listOfWeapons" Grid.Column="0"/>
             </Grid>
@@ -49,6 +50,7 @@
                     <TextBox x:Name="NumberOfArmorsTB"  KeyDown="NumberOfArmorsTB_KeyDown"/>
                     <Button x:Name="GenerateArmorsButton" Content="Generate Armor" Click="GenerateArmorsButton_Click"/>
                     <CheckBox x:Name="SaveArmor" Content="Save Armors to File"/>
+                    <ProgressBar x:Name="ArmorProgressBar" Height="15" Width="150" HorizontalAlignment="Left"/>
                 </StackPanel>
                 <ListView x:Name="listOfArmors" Grid.Column="0"/>
             </Grid>
@@ -64,6 +66,7 @@
                     <TextBox x:Name="NumberOfPlayersTB" KeyDown="NumberOfPlayersTB_KeyDown"/>
                     <Button x:Name="GeneratePlayersButton" Content="Generate Armor" Click="GeneratePlayersButton_Click"/>
                     <CheckBox x:Name="SavePlayer" Content="Save Players to File"/>
+                    <ProgressBar x:Name="PlayerProgressBar" Height="15" Width="150" HorizontalAlignment="Left"/>
                 </StackPanel>
                 <ListView x:Name="listOfPlayers" Grid.Column="0"/>
             </Grid>

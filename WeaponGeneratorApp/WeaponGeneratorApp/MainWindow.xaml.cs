@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using RFMiscLib.RandomNumber;
 using Generation.Weapons;
 using LogSystem;
+using System.Threading;
+
 namespace WeaponGenerator
 {
 	/// <summary>
@@ -22,10 +24,13 @@ namespace WeaponGenerator
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		Log logFile = new Log("log.txt",true);
 		List<Weapon> weapons = new List<Weapon>();
+		List<ListViewItem> listViewItems = new List<ListViewItem>();
 		int totalGeneratedWeapons = 0;
 		public MainWindow()
 		{
+			logFile.Clear();
 			InitializeComponent();
 		}
 
@@ -44,47 +49,52 @@ namespace WeaponGenerator
 		}
 		private void GenerateWeaponsButton_Click(object sender, RoutedEventArgs e)
 		{
-			Log log = new Log("generatedWeapons.txt", true);
-			log.Clear();
 			int num;
-
+			Log weaponLog = new Log("generatedWeapons.txt", true);
+			weaponLog.Clear();
 			if (int.TryParse(NumberOfWeaponsTB.Text, out num))
 			{
+				listOfWeapons.Items.Clear();
+				DateTime start = DateTime.Now;
 				weapons.Clear();
-				totalGeneratedWeapons += num;
 				for (int i = 0; i < num; i++)
 				{
-
 					weapons.Add(new Weapon());
-					ListViewItem weaponItem = new ListViewItem();
-					weaponItem.Tag = i;
-					weaponItem.Name = "WeaponName";
-					weaponItem.Content = weapons[i].Name;
-					weaponItem.MouseDoubleClick += weaponItem_DoubleClick;
-					listOfWeapons.Items.Add(weaponItem);
 				}
 				if ((bool)SaveWeapon.IsChecked)
 				{
+					weaponLog.LogText("Name:Assembly Damage:Physical Damage:Magical Damage:Crit Multiplier:Crit Chance:Rarity:Weapon Type:Main Damage Type: Physical Damage Type:Magical Damage Type");
 					for (int i = 0; i < num; i++)
 					{
-						log.LogText(weapons[i].GetWeaponData(false));
+						weaponLog.LogText(weapons[i].GetWeaponData(false));
 					}
-					MessageBoxImage icon = MessageBoxImage.Information;
-					MessageBoxButton button = MessageBoxButton.OK;
-					MessageBox.Show("Weapons successfully generated", "Info", button, icon);
 				}
-				NumberOfWeaponsTB.Clear();
+				else
+				{
+					for (int i = 0; i < num; i++)
+					{
+						ListViewItem weaponItem = new ListViewItem();
+						weaponItem.Tag = i;
+						weaponItem.Name = "WeaponName";
+						weaponItem.Content = weapons[i].Name;
+						weaponItem.MouseDoubleClick += weaponItem_DoubleClick;
+						listOfWeapons.Items.Add(weaponItem);
+					}
+				}
+				MessageBoxImage icon = MessageBoxImage.Information;
+				MessageBoxButton button = MessageBoxButton.OK;
+				MessageBox.Show("Weapons successfully generated", "Info", button, icon);
+				DateTime end = DateTime.Now;
+				logFile.LogText((end - start).ToString());
 			}
 			else
 			{
 				MessageBoxImage icon = MessageBoxImage.Error;
 				MessageBoxButton button = MessageBoxButton.OK;
 				MessageBox.Show("Please enter a number", "Incorrect Input", button, icon);
-				NumberOfWeaponsTB.Clear();
 			}
-
+			NumberOfWeaponsTB.Clear();
 		}
-
 		private void NumberOfArmorsTB_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.Key == Key.Enter)
