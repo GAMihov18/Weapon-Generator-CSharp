@@ -16,6 +16,7 @@ using RFMiscLib.RandomNumber;
 using Generation.Weapons;
 using LogSystem;
 using System.Threading;
+using WeaponGeneratorApp;
 
 namespace WeaponGenerator
 {
@@ -24,13 +25,13 @@ namespace WeaponGenerator
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		Log logFile = new Log("log.txt", true);
+		LogWindow logWindow = new LogWindow();
 		static List<Weapon> weapons = new List<Weapon>();
 		List<ListViewItem> listViewItems = new List<ListViewItem>();
 
 		public MainWindow()
 		{
-			logFile.LogInfo($"Log created on: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
+			logWindow.LogInfo($"Log created on: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
 			InitializeComponent();
 		}
 		delegate void Caller(object sender,MouseButtonEventArgs ev);
@@ -56,7 +57,7 @@ namespace WeaponGenerator
 			weaponLog.Clear();
 			if (int.TryParse(NumberOfWeaponsTB.Text, out num))
 			{
-				logFile.LogInfo($"Generating {num} weapons");
+				logWindow.LogInfo($"Generating {num} weapons");
 				//Clear previous generations
 				listOfWeapons.Items.Clear();
 				weapons.Clear();
@@ -88,12 +89,13 @@ namespace WeaponGenerator
 						listOfWeapons.Items.Add(weaponItem);
 					}
 				}
+				DateTime end = DateTime.Now;
+				logWindow.LogInfo($"Time taken to generate {num} weapons: {end - start}");
 				MessageBoxImage icon = MessageBoxImage.Information;
 				MessageBoxButton button = MessageBoxButton.OK;
 				MessageBox.Show("Weapons successfully generated", "Info", button, icon);
 				//End generation timer and log in logfile
-				DateTime end = DateTime.Now;
-				logFile.LogInfo($"Time taken to generate {num} weapons: {end - start}");
+				
 			}
 			else
 			{
@@ -139,7 +141,7 @@ namespace WeaponGenerator
 
 		private void ChoosePlayerGeneration_Click(object sender, EventArgs ev)
 		{
-			logFile.LogInfo("Player Menu Chosen");
+			logWindow.LogInfo("Player Menu Chosen");
 			WeaponGeneratorGrid.Visibility = Visibility.Collapsed;
 			ArmorGeneratorGrid.Visibility = Visibility.Collapsed;
 			PlayerGeneratorGrid.Visibility = Visibility.Visible;
@@ -176,8 +178,13 @@ namespace WeaponGenerator
 
 		private void ExitButton_Click(object sender, EventArgs ev)
 		{
-			logFile.LogInfo("End of log\n-----------------");
+			logWindow.LogInfo("End of log\n-----------------");
 			Application.Current.Shutdown();
 		}
-	}
+
+        private void OpenLogWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+			logWindow.Show();
+        }
+    }
 }

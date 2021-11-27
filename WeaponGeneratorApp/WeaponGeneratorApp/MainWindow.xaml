@@ -9,7 +9,7 @@
     <Grid Margin="10px">
         <Grid x:Name="MainMenu" Visibility="Visible" Margin="0,10,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="110"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -18,7 +18,11 @@
             <StackPanel MaxWidth="500px" Grid.Column="1">
                 <Button x:Name="GeneratorMenuButton" Content="Go to generation menu" Click="GeneratorMenuButton_Click"/>
             </StackPanel>
-            <Button x:Name="ExitButton" Content="Exit app" Click="ExitButton_Click" Grid.Column="0" MaxHeight="80px" MinHeight="50px" VerticalAlignment="Bottom"/>
+            <StackPanel VerticalAlignment="Bottom" Grid.Column="0">
+                <Button x:Name="OpenLogWindowButton" Click="OpenLogWindowButton_Click" Content="Show Log Window" MinHeight="30px" MaxHeight="50px"/>
+                <Button x:Name="ExitButton" Content="Exit app" Click="ExitButton_Click" Grid.Column="0" MaxHeight="80px" MinHeight="50px" Margin="0,10,0,10"/>
+            </StackPanel>
+            
         </Grid>
 
         <Grid x:Name="GeneratorMenu" Visibility="Hidden">

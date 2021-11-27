@@ -14,11 +14,16 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="logView" Width="600"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0">
-            
+        <ListView x:Name="logView" Width="600"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" FontFamily="Consolas">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Severity" Width="100"/>
+                    <GridViewColumn HeaderStringFormat="" Width="500" Header="Message"/>
+                </GridView>
+            </ListView.View>
         </ListView>
         <StackPanel Grid.Column="1" VerticalAlignment="Bottom" Margin="0,0,0,20">
-            <Button  Content="Clear Logs" Click="Clear"/>
+            <Button  Content="Clear Logs" Click="Clear_Click"/>
         </StackPanel>
     </Grid>
 </Window>
