@@ -18,7 +18,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Severity" Width="100"/>
-                    <GridViewColumn HeaderStringFormat="" Width="500" Header="Message"/>
+                    <GridViewColumn Width="500" Header="Message"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -49,7 +49,7 @@ namespace WeaponGeneratorApp
             logFile.LogInfo(msg);
             ListViewItem item = new ListViewItem();
             item.Content = $"Info      || {msg}";
-            logView.Items.Add(item);
+            ViewBase view = logView.View;
         }
         public void LogWarning(string msg)
         {
