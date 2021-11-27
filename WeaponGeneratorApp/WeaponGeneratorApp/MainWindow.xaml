@@ -30,7 +30,6 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel VerticalAlignment="Bottom" Grid.Column="1" MinHeight="330px">
-                    <Label Content="Weapon Info" Grid.Column="1" VerticalAlignment="Bottom"/>
                     <TextBlock x:Name="WeaponInfoTB" Grid.Column="1" VerticalAlignment="Bottom" MinHeight="230px" Margin="5,0,0,0"/>
                     <TextBox x:Name="NumberOfWeaponsTB" KeyDown="NumberOfWeapons_KeyPressed"/>
                     <Button x:Name="GenerateWeaponsButton" Content="Generate Weapon" Click="GenerateWeaponsButton_Click"/>
