@@ -26,7 +26,7 @@ namespace WeaponGeneratorApp
             logFile.Clear();
             InitializeComponent();
             GridViewColumn gvc1 = new GridViewColumn();
-            gvc1.Header
+            gvc1.Header = "Severity";
         }
         public void Clear()
         {
