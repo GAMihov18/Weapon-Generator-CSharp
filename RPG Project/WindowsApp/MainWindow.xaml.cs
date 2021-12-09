@@ -13,10 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RFMiscLib.RandomNumber;
-using Generation.Weapons;
-using LogSystem;
+using Generators.WeaponGenerators;
+using LogSystemLib;
 using System.Threading;
-using WeaponGeneratorApp;
+using WeaponGenerator;
+using System.IO;
 
 namespace WeaponGenerator
 {
@@ -25,13 +26,11 @@ namespace WeaponGenerator
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		LogWindow logWindow = new LogWindow();
 		static List<Weapon> weapons = new List<Weapon>();
 		List<ListViewItem> listViewItems = new List<ListViewItem>();
 
 		public MainWindow()
 		{
-			logWindow.LogInfo($"Log created on: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
 			InitializeComponent();
 		}
 		delegate void Caller(object sender,MouseButtonEventArgs ev);
@@ -39,7 +38,6 @@ namespace WeaponGenerator
 		{
 			MouseButtonEventArgs e = ev as MouseButtonEventArgs;
 			ListViewItem item = sender as ListViewItem;
-			new WeaponInfo(weapons[(int)item.Tag]).Show();
 		}
 		private void NumberOfWeapons_KeyPressed(object sender, EventArgs ev)
 		{
@@ -53,11 +51,9 @@ namespace WeaponGenerator
 		{
 			RoutedEventArgs e = ev as RoutedEventArgs;
 			int num;
-			Log weaponLog = new Log("generatedWeapons.txt", true);
-			weaponLog.Clear();
+			StreamWriter weaponLog = new StreamWriter("generated_weapons.txt",false);
 			if (int.TryParse(NumberOfWeaponsTB.Text, out num))
 			{
-				logWindow.LogInfo($"Generating {num} weapons");
 				//Clear previous generations
 				listOfWeapons.Items.Clear();
 				weapons.Clear();
@@ -71,11 +67,12 @@ namespace WeaponGenerator
 
 				if ((bool)SaveWeapon.IsChecked)
 				{
-					weaponLog.LogText("Name:Assembly Damage:Physical Damage:Magical Damage:Crit Multiplier:Crit Chance:Rarity:Weapon Type:Main Damage Type: Physical Damage Type:Magical Damage Type");
+					weaponLog.WriteLine("Name:Assembly Damage:Physical Damage:Magical Damage:Crit Multiplier:Crit Chance:Rarity:Weapon Type:Main Damage Type: Physical Damage Type:Magical Damage Type");
 					for (int i = 0; i < num; i++)
 					{
-						weaponLog.LogText(weapons[i].GetWeaponData(false));
+						weaponLog.WriteLine(weapons[i].GetWeaponData(false));
 					}
+
 				}
 				else
 				{
@@ -90,7 +87,6 @@ namespace WeaponGenerator
 					}
 				}
 				DateTime end = DateTime.Now;
-				logWindow.LogInfo($"Time taken to generate {num} weapons: {end - start}");
 				MessageBoxImage icon = MessageBoxImage.Information;
 				MessageBoxButton button = MessageBoxButton.OK;
 				MessageBox.Show("Weapons successfully generated", "Info", button, icon);
@@ -103,6 +99,7 @@ namespace WeaponGenerator
 				MessageBoxButton button = MessageBoxButton.OK;
 				MessageBox.Show("Please enter a number", "Incorrect Input", button, icon);
 			}
+			weaponLog.Close();
 			NumberOfWeaponsTB.Clear();
 		}
 		private void NumberOfArmorsTB_KeyDown(object sender, EventArgs ev)
@@ -141,7 +138,6 @@ namespace WeaponGenerator
 
 		private void ChoosePlayerGeneration_Click(object sender, EventArgs ev)
 		{
-			logWindow.LogInfo("Player Menu Chosen");
 			WeaponGeneratorGrid.Visibility = Visibility.Collapsed;
 			ArmorGeneratorGrid.Visibility = Visibility.Collapsed;
 			PlayerGeneratorGrid.Visibility = Visibility.Visible;
@@ -178,13 +174,11 @@ namespace WeaponGenerator
 
 		private void ExitButton_Click(object sender, EventArgs ev)
 		{
-			logWindow.LogInfo("End of log\n-----------------");
 			Application.Current.Shutdown();
 		}
 
         private void OpenLogWindowButton_Click(object sender, RoutedEventArgs e)
         {
-			logWindow.Show();
         }
     }
 }

@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Xml.Linq;
-using LogSystem;
-using WeaponGeneration;
-
-namespace UI
+﻿using LogSystemLib;
+using Generators.WeaponGenerators;
+namespace ConsoleLibs
 {
-    public class Menu
+    public class Menus
     {
-        public static void MainMenu()
+        public static void Main()
         {
             Console.Clear();
             Console.Write($"     Main Menu     \n" +
@@ -23,11 +16,11 @@ namespace UI
             switch (Console.ReadLine())
             {
                 case "1":
-                    MainMenu();
+                    Main();
                     break;
                 case "2":
                     Console.Clear();
-                    Log log = new Log("weapon_generator.txt", true);
+                    LogSystem log = new LogSystem("weapon_generator.txt", true);
                     log.LogClear();
                     Console.Write($"How many weapons do you want to generate? ");
                     temp = int.Parse(Console.ReadLine());
@@ -39,10 +32,10 @@ namespace UI
                     }
                     Console.Clear();
                     Console.Write($"Successfully generated {temp} weapons.\nCheck .exe directory for a file"); Thread.Sleep(1000);
-                    MainMenu();
+                    Main();
                     break;
                 case "3":
-                    MainMenu();
+                    Main();
                     break;
                 case "0":
                     Console.WriteLine("\nExiting App");
@@ -50,7 +43,7 @@ namespace UI
                 default:
                     Console.Clear();
                     Console.Write("Wrong input, returning to main menu");
-                    MainMenu();
+                    Main();
                     break;
             }
         }

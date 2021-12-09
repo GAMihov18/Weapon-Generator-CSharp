@@ -2,29 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
-using System.IO;
+using System.Threading.Tasks;
 
 namespace RFMiscLib
 {
-	namespace RandomNumber
+	public class Reader
 	{
-		public class RAND
-		{
-			static Random rnd = new Random();
-			public static int getRandInt(int a, int b)
-			{
-				return rnd.Next(a, b);
-			}
-			public static double getRandDouble(double a, double b)
-			{
-				return rnd.NextDouble() * (b - a) + a;
-			}
-		}
-	}
-	class Reader
-	{
-		public static string ReadLine(int timeToWait)
+		public static string? ReadLine(int timeToWait)
 		{
 			int i = 0;
 			do
@@ -41,7 +25,7 @@ namespace RFMiscLib
 				return string.Empty;
 			}
 		}
-		public static string ReadLine(int timeToWait, string timeoutMessage)
+		public static string? ReadLine(int timeToWait, string timeoutMessage)
 		{
 			int i = 0;
 			do

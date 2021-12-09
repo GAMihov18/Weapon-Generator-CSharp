@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-
-namespace LogSystem
+﻿namespace LogSystemLib
 {
-    class Log
+    public class LogSystem
     {
         private string path;
         private bool append;
-        public Log(string path, bool append)
+        public LogSystem(string path, bool append)
         {
             this.path = path;
             this.append = append;

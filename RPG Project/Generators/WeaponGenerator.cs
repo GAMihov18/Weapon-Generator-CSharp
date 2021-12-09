@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RFMiscLib.RandomNumber;
-using LogSystem;
-namespace Generation
+﻿using RFMiscLib.RandomNumber;
+
+namespace Generators
 {
-	namespace Weapons
-    {
+	namespace WeaponGenerators
+	{
 		public struct WEAPON_VALUE
 		{
 			public enum TYPE
 			{
-				KNIFE, DAGGER, SHORTSWORD, 
-				LONGSWORD, BASTARD_SWORD, BOW, 
-				POLEARM, SPEAR, TWO_HANDED_SWORD, 
-				HAMMER, MACE, WAR_AXE, 
+				KNIFE, DAGGER, SHORTSWORD,
+				LONGSWORD, BASTARD_SWORD, BOW,
+				POLEARM, SPEAR, TWO_HANDED_SWORD,
+				HAMMER, MACE, WAR_AXE,
 				BATTLE_AXE, RAPIER
 			}
 			public enum RARITY
@@ -433,173 +428,9 @@ namespace Generation
 				}
 			}
 		}
-	}
-    namespace Armors
-    {
-        struct ARMOR_VALUES
-        {
-            public enum TYPE
-            {
-				HELMET, CHESTPLATE, LEGGINGS, BOOTS
-            }
-            public enum RARITY
-            {
-				COMMON, UNCOMMON, RARE, ULTRA_RARE, LEGENDARY, MYTHIC, SPECIAL
-			}
-			public static string ToString(TYPE type)
-            {
-                switch (type)
-                {
-                    case TYPE.HELMET:
-						return "Helmet";
-                    case TYPE.CHESTPLATE:
-						return "Chestplate";
-                    case TYPE.LEGGINGS:
-						return "Leggings";
-                    case TYPE.BOOTS:
-						return "Boots";
-                    default:
-						throw new ArgumentException("Incorrect armor type given");
-                        
-                }
-            }
-			public static string ToString(RARITY rarity)
-            {
-                switch (rarity)
-                {
-                    case RARITY.COMMON:
-						return "Common";
-                    case RARITY.UNCOMMON:
-						return "Uncommon";
-                    case RARITY.RARE:
-						return "Rare";
-                    case RARITY.ULTRA_RARE:
-						return "Ultra Rare";
-                    case RARITY.LEGENDARY:
-						return "Legendary";
-                    case RARITY.MYTHIC:
-						return "Mythic";                    
-					case RARITY.SPECIAL:
-						return "Special";
-                    default:
-						throw new ArgumentException("Invalid armor rarity given");
-                }
-            }
-        }
-		class Armor
+		public class WeaponGenerator
 		{
-			private string name;
-			private double armorValue;
-			private ARMOR_VALUES.TYPE armorType;
-			private ARMOR_VALUES.RARITY armorRarity;
-			public string Name
-			{
-				get { return name; }
-				set { name = value; }
-			}
-			public double ArmorValue
-			{
-				get { return armorValue; }
-				set { armorValue = value; }
-			}
-			public ARMOR_VALUES.TYPE ArmorType
-			{
-				get { return armorType; }
-				set { armorType = value; }
-			}
-			public ARMOR_VALUES.RARITY ArmorRarity
-			{
-				get { return armorRarity; }
-				set { armorRarity = value; }
-			}
 
-			Armor()
-			{
-				name = "";
-				armorValue = RAND.getRandDouble(100, 1000);
-				armorType = (ARMOR_VALUES.TYPE)RAND.getRandInt(0, 4);
-				armorRarity = (ARMOR_VALUES.RARITY)RAND.getRandInt(0, 7);
-				SetArmorTypeMod();
-				SetRarityMod();
-				SetName();
-			}
-			private void SetName()
-			{
-				name = $"{ARMOR_VALUES.ToString(armorRarity)} {ARMOR_VALUES.ToString(ArmorType)}";
-			}
-			private void SetRarityMod()
-            {
-                switch (armorRarity)
-                {
-                    case ARMOR_VALUES.RARITY.COMMON:
-						armorValue *= 0.7;
-                        break;
-                    case ARMOR_VALUES.RARITY.UNCOMMON:
-						armorValue *= 0.8;
-						break;
-                    case ARMOR_VALUES.RARITY.RARE:
-						armorValue *= 1;
-						break;
-                    case ARMOR_VALUES.RARITY.ULTRA_RARE:
-						armorValue *= 1.2;
-						break;
-                    case ARMOR_VALUES.RARITY.LEGENDARY:
-						armorValue *= 1.5;
-						break;
-                    case ARMOR_VALUES.RARITY.MYTHIC:
-						armorValue *= 1.7;
-						break;
-                    case ARMOR_VALUES.RARITY.SPECIAL:
-						armorValue *= 2;
-                        break;
-                    default:
-                        break;
-                }
-            }
-			private void SetArmorTypeMod()
-            {
-                switch (ArmorType)
-                {
-                    case ARMOR_VALUES.TYPE.HELMET:
-						armorValue = 0.7;
-                        break;
-                    case ARMOR_VALUES.TYPE.CHESTPLATE:
-						armorValue = 1;
-						break;
-                    case ARMOR_VALUES.TYPE.LEGGINGS:
-						armorValue = 0.9;
-						break;
-                    case ARMOR_VALUES.TYPE.BOOTS:
-						armorValue = 0.4;
-						break;
-                    default:
-                        break;
-                }
-            }
 		}
 	}
-	namespace Players
-    {
-		struct PLAYER_VALUES
-        {
-			enum PLAYER_CLASS
-            {
-
-            }
-        }
-		class Player
-        {
-			private string name;
-			private double health;
-			private double stamina;
-			private double mana;
-			private Weapons.Weapon? weapon1;
-			private Weapons.Weapon? weapon2;
-			private Armors.Armor? helmet;
-			private Armors.Armor? chestplate;
-			private Armors.Armor? leggings;
-			private Armors.Armor? boots;
-			
-        }
-    }
 }
