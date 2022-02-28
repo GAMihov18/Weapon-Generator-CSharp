@@ -72,7 +72,7 @@ namespace WeaponGenerator
 					{
 						weaponLog.WriteLine(weapons[i].GetWeaponData(false));
 					}
-
+					
 				}
 				else
 				{
