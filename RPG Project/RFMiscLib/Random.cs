@@ -2,18 +2,17 @@
 {
 	namespace RandomNumber
 	{
-		public class RAND
+		public static class RAND
 		{
 			static Random rnd = new Random();
-			public static int getRandInt(int a, int b)
+			public static int getRandInt(int lowerBracket, int upperBracket)
 			{
-				return rnd.Next(a, b);
+				return rnd.Next(lowerBracket, upperBracket);
 			}
-			public static double getRandDouble(double a, double b)
+			public static double getRandDouble(double lowerBracket, double upperBracket)
 			{
-				return rnd.NextDouble() * (b - a) + a;
+				return rnd.NextDouble() * (upperBracket - lowerBracket) + lowerBracket;
 			}
 		}
 	}
-
 }
