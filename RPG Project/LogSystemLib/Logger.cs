@@ -1,4 +1,4 @@
-﻿namespace LogSystemLib
+﻿namespace LogSystemLib.LogWriting
 {
 	
 	public interface ILogger

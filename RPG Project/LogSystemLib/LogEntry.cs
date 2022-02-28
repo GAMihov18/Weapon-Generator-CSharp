@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LogSystemLib
+namespace LogSystemLib.LogWriting
 {
 	public interface ILogEntry
 	{
@@ -24,5 +24,41 @@ namespace LogSystemLib
 		public string? CallerThreadName { get; set; }
 		public Exception? Exception { get; set; }
 
+		public LogEntry(Exception exception)
+		{
+			Name = "Exception-generated log entry";
+			Message = exception.Message;
+			Date = DateTime.Now;
+			CallerThreadId = Thread.CurrentThread.ManagedThreadId;
+			CallerThreadName = Thread.CurrentThread.Name;
+			Exception = exception;
+		}
+		public LogEntry(string message)
+		{
+			Name = "Unnamed log entry";
+			Message = message;
+			Date = DateTime.Now;
+			CallerThreadId = Thread.CurrentThread.ManagedThreadId;
+			CallerThreadName = Thread.CurrentThread.Name;
+			Exception = null;
+		}
+		public LogEntry(string logName, string message)
+		{
+			Name = logName;
+			Message = message;
+			Date = DateTime.Now;
+			CallerThreadId = Thread.CurrentThread.ManagedThreadId;
+			CallerThreadName = Thread.CurrentThread.Name;
+			Exception = null;
+		}
+		public LogEntry(string logName, string message, Exception exception)
+		{
+			Name = logName;
+			Message = message;
+			Date = DateTime.Now;
+			CallerThreadId = Thread.CurrentThread.ManagedThreadId;
+			CallerThreadName = Thread.CurrentThread.Name;
+			Exception = exception;
+		}
 	}
 }
