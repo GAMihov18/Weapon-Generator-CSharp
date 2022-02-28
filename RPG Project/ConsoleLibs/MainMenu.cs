@@ -1,4 +1,4 @@
-﻿using LogSystemLib;
+﻿using LogSystemLib.LogWriting;
 using Generators.WeaponGenerators;
 namespace ConsoleLibs
 {
@@ -20,7 +20,7 @@ namespace ConsoleLibs
                     break;
                 case "2":
                     Console.Clear();
-                    LogSystem log = new LogSystem("weapon_generator.txt", true);
+                    Logger log = new Logger("weapon_generator.txt");
                     log.LogClear();
                     Console.Write($"How many weapons do you want to generate? ");
                     temp = int.Parse(Console.ReadLine());
