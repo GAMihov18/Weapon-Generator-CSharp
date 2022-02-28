@@ -35,19 +35,22 @@ namespace LogSystemLib.LogWriting
 
 		public void Log(ILogEntry logEntry)
 		{
-			StreamWriter sw = new StreamWriter(Path);
-			sw.Write(logEntry.ToString());
+			StreamWriter sw = new StreamWriter(Path, append: true);
+			sw.WriteLine(logEntry.ToString());
+			sw.Close();
 		}
 
 		public void LogText(string text)
 		{
-			StreamWriter sw = new StreamWriter(Path);
-			sw.Write(text);
+			StreamWriter sw = new StreamWriter(Path, append: true);
+			sw.WriteLine(text);
+			sw.Close();
 		}
 		public void LogClear()
 		{
 			StreamWriter sw = new StreamWriter(Path,append:false);
 			sw.Write("");
+			sw.Close();
 		}
 	}
 }

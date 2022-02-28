@@ -8,7 +8,9 @@ namespace LogViewer
     {
         static void Main()
         {
-
+            Thread.CurrentThread.Name = "MainThreadViewerThread";
+            Logger logger = new Logger();
+            logger.Log("this is interesting", ILogEntry.LogSeverity.Info);
         }
     }
 }
