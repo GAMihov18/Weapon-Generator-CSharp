@@ -38,6 +38,7 @@ namespace WeaponGenerator
 		{
 			MouseButtonEventArgs e = ev as MouseButtonEventArgs;
 			ListViewItem item = sender as ListViewItem;
+			
 		}
 		private void NumberOfWeapons_KeyPressed(object sender, EventArgs ev)
 		{

@@ -1,5 +1,7 @@
 ﻿using LogSystemLib.LogWriting;
 using Generators.WeaponGenerators;
+using System.Diagnostics;
+
 namespace ConsoleLibs
 {
     public class Menus
@@ -21,17 +23,21 @@ namespace ConsoleLibs
                 case "2":
                     Console.Clear();
                     Logger log = new Logger("weapon_generator.txt");
+
                     log.LogClear();
                     Console.Write($"How many weapons do you want to generate? ");
                     temp = int.Parse(Console.ReadLine());
+                    Stopwatch stopwatch = new Stopwatch();
+                    stopwatch.Start();
                     log.LogText($"Name:Assembly Damage:Physical Damage:Magical Damage:Crit Mult:Crit Rate:Rarity:Weapon Type:Main Damage Type:Physical Damage:Magical Damage:");
                     for (int i = 0; i < temp; i++)
                     {
                         Weapon w = new Weapon();
                         log.LogText(w.GetWeaponData(false));
                     }
+                    stopwatch.Stop();
                     Console.Clear();
-                    Console.Write($"Successfully generated {temp} weapons.\nCheck .exe directory for a file"); Thread.Sleep(1000);
+                    Console.Write($"Successfully generated {temp} weapons.\nCheck .exe directory for a file"); Console.Write($". Took {stopwatch.Elapsed} to generate"); Console.ReadKey();
                     Main();
                     break;
                 case "3":
