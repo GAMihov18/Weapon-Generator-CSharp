@@ -7,9 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator", "Generator\Gene
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberGenerators", "NumberGenerators\NumberGenerators\NumberGenerators.csproj", "{B8E369BB-225D-4850-A8AE-D4E7072892DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{17122721-12C2-4DDC-8189-48BA29C7DB8A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameCore", "GameCore\GameCore.csproj", "{17122721-12C2-4DDC-8189-48BA29C7DB8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTest", "ConsoleAppTest\ConsoleAppTest.csproj", "{29B5241A-F7C6-428E-BDD3-5565DCA5C8B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{52F7D939-971E-46F8-8AF6-76ED0E6F2B50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{29B5241A-F7C6-428E-BDD3-5565DCA5C8B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29B5241A-F7C6-428E-BDD3-5565DCA5C8B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29B5241A-F7C6-428E-BDD3-5565DCA5C8B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52F7D939-971E-46F8-8AF6-76ED0E6F2B50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52F7D939-971E-46F8-8AF6-76ED0E6F2B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52F7D939-971E-46F8-8AF6-76ED0E6F2B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52F7D939-971E-46F8-8AF6-76ED0E6F2B50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
