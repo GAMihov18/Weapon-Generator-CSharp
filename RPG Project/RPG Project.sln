@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTest", "ConsoleAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{52F7D939-971E-46F8-8AF6-76ED0E6F2B50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loader", "Loader\Loader.csproj", "{BF9AD083-B200-4AD8-ACA0-84C795EB00CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F310B62E-CB54-4E6D-B347-0C8225324780}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDataTools", "GameDataTools\GameDataTools.csproj", "{64E99344-D206-4D89-ACB9-C1A66F47FE98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,11 +45,22 @@ Global
 		{52F7D939-971E-46F8-8AF6-76ED0E6F2B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52F7D939-971E-46F8-8AF6-76ED0E6F2B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52F7D939-971E-46F8-8AF6-76ED0E6F2B50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF9AD083-B200-4AD8-ACA0-84C795EB00CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF9AD083-B200-4AD8-ACA0-84C795EB00CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF9AD083-B200-4AD8-ACA0-84C795EB00CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF9AD083-B200-4AD8-ACA0-84C795EB00CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64E99344-D206-4D89-ACB9-C1A66F47FE98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64E99344-D206-4D89-ACB9-C1A66F47FE98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64E99344-D206-4D89-ACB9-C1A66F47FE98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64E99344-D206-4D89-ACB9-C1A66F47FE98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28F514B1-711C-4BF9-9719-0B495D980841}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{64E99344-D206-4D89-ACB9-C1A66F47FE98} = {F310B62E-CB54-4E6D-B347-0C8225324780}
 	EndGlobalSection
 EndGlobal
